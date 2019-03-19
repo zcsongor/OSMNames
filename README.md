@@ -1,4 +1,4 @@
-# OSM Names [![Build Status](https://travis-ci.org/OSMNames/OSMNames.svg?branch=master)](https://travis-ci.org/OSMNames/OSMNames) [![Documentation Status](https://readthedocs.org/projects/osmnames-development-branch/badge/?version=latest)](http://osmnames.readthedocs.io/en/latest/?badge=latest)
+# Trekhunt's fork of OSM Names [![Build Status](https://travis-ci.org/OSMNames/OSMNames.svg?branch=master)](https://travis-ci.org/OSMNames/OSMNames) [![Documentation Status](https://readthedocs.org/projects/osmnames-development-branch/badge/?version=latest)](http://osmnames.readthedocs.io/en/latest/?badge=latest)
 
 Database of geographic place names with hierarchy and bounding boxes from
 OpenStreetMap for full text search downloadable for free: http://osmnames.org
