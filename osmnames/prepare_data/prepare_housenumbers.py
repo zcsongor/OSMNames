@@ -1,7 +1,6 @@
 import os
 
 from osmnames.database.functions import exec_sql_from_file
-from osmnames import consistency_check
 
 SQL_DIR = "{}/prepare_housenumbers/".format(os.path.dirname(__file__))
 
@@ -13,7 +12,6 @@ def prepare_housenumbers():
     set_street_ids_by_street_name()
     set_street_attributes_by_nearest_street()
     sanitize_housenumbers()
-    consistency_check.missing_street_ids()
 
 
 def set_street_attributes_by_street_relation_members():

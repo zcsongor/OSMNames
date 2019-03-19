@@ -16,7 +16,7 @@ def prepare_data():
     determine_linked_places()
     create_hierarchy()
     merge_corresponding_linestrings()
-    prepare_housenumbers()
+#     prepare_housenumbers()
 
 
 def configure_for_preparation():
@@ -35,7 +35,7 @@ def create_custom_columns():
 
 
 def set_tables_unlogged():
-    for table in ["osm_linestring", "osm_point", "osm_polygon", "osm_housenumber"]:
+    for table in ["osm_linestring", "osm_point", "osm_polygon"]:
         exec_sql("ALTER TABLE {} SET UNLOGGED;".format(table))
 
 

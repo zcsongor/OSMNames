@@ -13,6 +13,7 @@ CREATE TABLE osm_merged_linestring AS
     string_agg(DISTINCT a.type,',') AS type,
     a.name,
     max(a.alternative_names) AS alternative_names,
+    max(a.name_hu) AS name_hu,
     max(a.wikipedia) AS wikipedia,
     max(a.wikidata) AS wikidata,
     st_simplify(st_collect(a.geometry), 10) AS geometry,

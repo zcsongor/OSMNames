@@ -2,6 +2,7 @@ DROP MATERIALIZED VIEW IF EXISTS mv_points;
 CREATE MATERIALIZED VIEW mv_points AS
 SELECT
   name,
+  name_hu,
   alternative_names,
   'node'::TEXT as osm_type,
   osm_id::VARCHAR AS osm_id,
@@ -23,8 +24,7 @@ SELECT
   round(ST_XMAX(ST_Transform(geometry, 4326))::numeric, 7) AS east,
   round(ST_YMAX(ST_Transform(geometry, 4326))::numeric, 7) AS north,
   NULLIF(wikidata, '') AS wikidata,
-  NULLIF(wikipedia, '') AS wikipedia,
-  NULL::VARCHAR AS housenumbers
+  NULLIF(wikipedia, '') AS wikipedia
 FROM
   osm_point,
   get_parent_info(parent_id, name) as parentInfo

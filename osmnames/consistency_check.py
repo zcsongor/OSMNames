@@ -23,9 +23,9 @@ def missing_parent_ids():
     if missing_points > 0:
         log.warning('{} points (not linked) with missing parent_id'.format(missing_points))
 
-    missing_housenumbers = count("SELECT COUNT(id) FROM osm_housenumber WHERE parent_id IS NULL")
-    if missing_housenumbers > 0:
-        log.warning('{} housenumbers with missing parent_id'.format(missing_housenumbers))
+    # missing_housenumbers = count("SELECT COUNT(id) FROM osm_housenumber WHERE parent_id IS NULL")
+    # if missing_housenumbers > 0:
+    #     log.warning('{} housenumbers with missing parent_id'.format(missing_housenumbers))
 
 
 def missing_street_ids():

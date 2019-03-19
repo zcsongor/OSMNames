@@ -2,6 +2,7 @@ DROP MATERIALIZED VIEW IF EXISTS mv_polygons;
 CREATE MATERIALIZED VIEW mv_polygons AS
 SELECT
   name,
+  name_hu,
   alternative_names,
   CASE WHEN osm_id > 0 THEN 'way' ELSE 'relation' END AS osm_type,
   abs(osm_id)::VARCHAR as osm_id,
@@ -23,8 +24,7 @@ SELECT
   bounding_box[3] AS east,
   bounding_box[4] AS north,
   NULLIF(wikidata, '') AS wikidata,
-  NULLIF(wikipedia, '') AS wikipedia,
-  NULL::VARCHAR AS housenumbers
+  NULLIF(wikipedia, '') AS wikipedia
 FROM
   osm_polygon,
   get_parent_info(id, '') as parentInfo,

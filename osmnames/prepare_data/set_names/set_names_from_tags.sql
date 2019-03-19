@@ -1,6 +1,6 @@
 DROP FUNCTION IF EXISTS get_names(TEXT, HSTORE);
 CREATE FUNCTION get_names(current_name TEXT, all_tags HSTORE)
-RETURNS TABLE(name TEXT, alternative_names_string TEXT) AS $$
+RETURNS TABLE(name TEXT, alternative_names_string TEXT, name_hu TEXT) AS $$
 DECLARE
   accepted_name_tags TEXT[] := ARRAY['name','name:left','name:right','int_name','loc_name','nat_name',
                                      'official_name','old_name','reg_name','short_name','alt_name'];
@@ -28,6 +28,7 @@ BEGIN
   alternative_names := array_remove(alternative_names, name);
   alternative_names_string := array_to_string(alternative_names, ',');
   alternative_names_string := regexp_replace(alternative_names_string, E'\\s+', ' ', 'g');
+  name_hu := all_tags -> 'name:hu';
 
   IF alternative_names_string = '' THEN
     alternative_names_string = NULL;
@@ -38,6 +39,6 @@ END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
 
-UPDATE osm_linestring SET (name, alternative_names) = (SELECT * FROM get_names(name, all_tags));
-UPDATE osm_polygon SET (name, alternative_names) = (SELECT * FROM get_names(name, all_tags));
-UPDATE osm_point SET (name, alternative_names) = (SELECT * FROM get_names(name, all_tags));
+UPDATE osm_linestring SET (name, alternative_names, name_hu) = (SELECT * FROM get_names(name, all_tags));
+UPDATE osm_polygon SET (name, alternative_names, name_hu) = (SELECT * FROM get_names(name, all_tags));
+UPDATE osm_point SET (name, alternative_names, name_hu) = (SELECT * FROM get_names(name, all_tags));

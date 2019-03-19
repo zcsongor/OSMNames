@@ -121,12 +121,12 @@ CREATE FUNCTION get_country_language_code(country_code_in VARCHAR(2)) RETURNS VA
 $$ LANGUAGE 'sql' IMMUTABLE;
 
 
-DROP FUNCTION IF EXISTS get_housenumbers(BIGINT);
-CREATE FUNCTION get_housenumbers(osm_id_in BIGINT) RETURNS TEXT AS $$
-  SELECT string_agg(housenumber, ', ' ORDER BY housenumber ASC)
-    FROM osm_housenumber
-    WHERE street_id = osm_id_in;
-$$ LANGUAGE 'sql' IMMUTABLE;
+-- DROP FUNCTION IF EXISTS get_housenumbers(BIGINT);
+-- CREATE FUNCTION get_housenumbers(osm_id_in BIGINT) RETURNS TEXT AS $$
+--   SELECT string_agg(housenumber, ', ' ORDER BY housenumber ASC)
+--     FROM osm_housenumber
+--     WHERE street_id = osm_id_in;
+-- $$ LANGUAGE 'sql' IMMUTABLE;
 
 
 DROP FUNCTION IF EXISTS get_bounding_box(GEOMETRY, TEXT, INTEGER);
